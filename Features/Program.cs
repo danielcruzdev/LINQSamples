@@ -15,9 +15,10 @@ namespace Features
 
             IEnumerable<Employee> sales = new List<Employee>()
             {
-                new Employee { Id = 3, Name = "Alex"}
+                new Employee { Id = 3, Name = "Alex" }
             };
 
+            Console.WriteLine(developers.Count());
             IEnumerator<Employee> enumerator = sales.GetEnumerator();
             while (enumerator.MoveNext())
             {
