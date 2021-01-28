@@ -18,19 +18,27 @@ namespace Features
             Console.WriteLine(duplicate(10));
             Console.WriteLine(func2(10, 2));
 
-            IEnumerable<Employee> developers = new Employee[]
+            var developers = new Employee[]
             {
                 new Employee {Id = 1, Name = "Daniel"},
                 new Employee {Id = 2, Name = "Karina"},
                 new Employee {Id = 3, Name = "Karin"}
             };
 
-            IEnumerable<Employee> sales = new List<Employee>()
+            var sales = new List<Employee>()
             {
                 new Employee { Id = 3, Name = "Alex" }
             };
 
-            foreach (var employee in developers.Where(e => e.Name.Length == 5).OrderBy(x => x.Name))
+            var query = developers.Where(e => e.Name.Length == 5)
+                                  .OrderByDescending(x => x.Name);
+
+            var query2 = from developer in developers
+                         where developer.Name.Length == 5
+                         orderby developer.Name descending
+                         select developer;
+
+            foreach (var employee in query2)
             {
                 Console.WriteLine(employee.Name);
             }
