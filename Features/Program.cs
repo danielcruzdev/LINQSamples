@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Features
 {
@@ -18,11 +19,9 @@ namespace Features
                 new Employee { Id = 3, Name = "Alex" }
             };
 
-            Console.WriteLine(developers.Count());
-            IEnumerator<Employee> enumerator = sales.GetEnumerator();
-            while (enumerator.MoveNext())
+            foreach (var employee in developers.Where(e => e.Name.StartsWith("D")))
             {
-                Console.WriteLine(enumerator.Current.Name);
+                Console.WriteLine(employee.Name);
             }
         }
     }
