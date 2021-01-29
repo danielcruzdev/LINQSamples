@@ -10,6 +10,16 @@ namespace Queries
     {
         static void Main(string[] args)
         {
+
+            var numbers = MyLinq.Random()
+                                .Where(n => n > 0.5)
+                                .Take(10);
+
+            foreach(var number in numbers)
+            {
+                Console.WriteLine(number);
+            }
+
             var movies = new List<Movie>
             {
                 new Movie {Title = "The dark knight", Rating = 8.9f, Year = 2020 },
@@ -21,9 +31,11 @@ namespace Queries
                 new Movie {Title = "The yellow knight", Rating = 6.4f, Year = 2016 }
             };
 
-            var query = movies.Filter(w => w.Year > 2000);
 
-            var enumerator = query.GetEnumerator();
+            var query = movies.Where(w => w.Year > 2017)
+                              .OrderByDescending(w => w.Rating);
+
+            var enumerator = query.GetEnumerator(); 
             while (enumerator.MoveNext())
             {
                 Console.WriteLine(enumerator.Current.Title);
