@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Cars
 {
@@ -92,7 +90,7 @@ namespace Cars
             Max = Int32.MinValue;
             Min = Int32.MaxValue;
         }
-        
+
         public CarStatistics Accumulate(Car car)
         {
             Count += 1;
